@@ -19,11 +19,16 @@ CREATE TABLE IF NOT EXISTS szcore_outfits (id bigint unsigned NOT NULL AUTO_INCR
 CREATE TABLE IF NOT EXISTS szcore_queue_priorities (identifier varchar(96) NOT NULL,priority int NOT NULL DEFAULT 0,reason varchar(128) DEFAULT NULL,expires_at timestamp NULL DEFAULT NULL,PRIMARY KEY(identifier)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS szcore_audit_log (id bigint unsigned NOT NULL AUTO_INCREMENT,action varchar(64) NOT NULL,actor varchar(96) NOT NULL,target varchar(96) DEFAULT NULL,data longtext NULL,created_at timestamp NOT NULL DEFAULT current_timestamp(),PRIMARY KEY(id),KEY ix_szcore_audit_action(action,created_at),KEY ix_szcore_audit_actor(actor,created_at)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE IF NOT EXISTS szcore_schema_migrations (version int NOT NULL,name varchar(128) NOT NULL,applied_at timestamp NOT NULL DEFAULT current_timestamp(),PRIMARY KEY(version)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
 ALTER TABLE szcore_characters ADD COLUMN IF NOT EXISTS permissions longtext NULL AFTER position;
 UPDATE szcore_characters SET permissions='[]' WHERE permissions IS NULL OR permissions='';
 CREATE TABLE IF NOT EXISTS szcore_bans (id bigint unsigned NOT NULL AUTO_INCREMENT,identifier varchar(96) NOT NULL,reason varchar(255) NOT NULL,banned_by varchar(96) DEFAULT NULL,expires_at timestamp NULL DEFAULT NULL,created_at timestamp NOT NULL DEFAULT current_timestamp(),PRIMARY KEY(id),KEY ix_szcore_bans_identifier(identifier,expires_at)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 ALTER TABLE szcore_characters ADD COLUMN IF NOT EXISTS dirty bigint NOT NULL DEFAULT 0 AFTER crypto;
+
 ALTER TABLE szcore_vehicles ADD COLUMN IF NOT EXISTS vehicle_type varchar(24) NOT NULL DEFAULT 'automobile' AFTER model;
+
 ALTER TABLE szcore_vehicles ADD COLUMN IF NOT EXISTS impound_fee bigint NOT NULL DEFAULT 0 AFTER last_position;
 ALTER TABLE szcore_vehicles ADD COLUMN IF NOT EXISTS impound_reason varchar(128) DEFAULT NULL AFTER impound_fee;
 ALTER TABLE szcore_vehicles ADD COLUMN IF NOT EXISTS impounded_at timestamp NULL DEFAULT NULL AFTER impound_reason;
