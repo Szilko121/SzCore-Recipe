@@ -1,32 +1,26 @@
-# 📜 SzCore-Recipe
+# SzCore Recipe
 
-[![SzCore Framework](https://img.shields.io/badge/SzCore-FiveM%20Framework-00f0ff?style=for-the-badge&logo=fivem&logoColor=white)](https://github.com/Szilko121/SzCore-Framework)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+Official txAdmin deployment recipe for **SzCore Framework v1.4.0-rc1** by SzCode.
 
-> **txAdmin Telepítő Recept az SzCore keretrendszerhez.**  
-> Automatikus szerver, erőforrások és adatbázis beállítás egyetlen kattintással.
+The recipe installs every native SzCore resource from its own GitHub repository, preserving the modular layout used by the framework.
 
----
+## txAdmin
 
-## 🚀 Használat txAdmin-nal (txAdmin Recipe Deployment)
+Use this repository as a remote recipe source and select `recipe.yaml`.
 
-1. Nyisd meg a **txAdmin** webes felületét.
-2. Kattints a **Deployer** fülre.
-3. Válaszd a **Remote Recipe URL** vagy **Recipe Engine** opciót.
-4. Másold be ezt az URL-t:
-   ```text
-   https://raw.githubusercontent.com/Szilko121/SzCore-Recipe/main/recipe.yaml
-   ```
-5. Kövesd a txAdmin képernyőn megjelenő utasításokat és add meg a MySQL adatbázis adataidat.
+## What it installs
 
----
+- FXServer base resources
+- `oxmysql` database dependency
+- `szcore` core
+- all selected `szcore_*` native resources
+- optional compatibility adapters when enabled by the recipe/configuration
+- SQL schema/migrations and ordered `server.cfg`/resource configuration
 
-## 📦 A csomag tartalma
-- Alapértelmezett `server.cfg` optimalizált indítási sorrenddel
-- SzCore összes moduláris csomagja
-- oxmysql & ox_lib integráció
-- Előre konfigurált frakciók, járművek, itemek
+## Repository model
 
----
+The recipe intentionally does **not** vendor all resources into this repository. Each module is downloaded from `https://github.com/Szilko121/<resource>` so users can also install/update individual resources independently.
 
-<p align="center">Készítve az <b>SzCore</b> ökoszisztéma számára ❤️</p>
+## Release pinning
+
+The release candidate recipe targets **v1.4.0-rc1**. Production deployments should stay pinned to known tags instead of blindly following moving branches.

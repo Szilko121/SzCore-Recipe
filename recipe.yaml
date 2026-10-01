@@ -1,26 +1,134 @@
-# SzCore Framework txAdmin Recipe
-name: SzCore Roleplay Framework
-author: Szilko121
-version: 1.0.0
-description: Next-generation FiveM Roleplay framework ecosystem with modular architecture.
-
+$engine: 3
+$onesync: on
+name: SzCore Framework
+version: 1.4.0-rc1
+author: SzCode
+description: Modular FiveM RP framework by SzCode. Installs every SzCore resource from its own repository.
 tasks:
   - action: download_github
-    src: https://github.com/Szilko121/SzCore-Framework
-    ref: main
-    dest: ./resources/[szcore]/SzCore-Framework
-
+    src: https://github.com/Szilko121/SzCore-Recipe
+    ref: v1.4.0-rc1
+    dest: ./tmp/szcore_recipe
+  - action: move_path
+    src: ./tmp/szcore_recipe/server.cfg
+    dest: ./server.cfg
+    overwrite: true
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/szcore_recipe/database/szcore.sql
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources/[cfx-default]
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/download/v2.14.1/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[standalone]
   - action: download_github
     src: https://github.com/Szilko121/szcore
-    ref: main
+    ref: v1.4.0-rc1
     dest: ./resources/[szcore]/szcore
-
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_world
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_world
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_queue
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_queue
   - action: download_github
     src: https://github.com/Szilko121/szcore_ui
-    ref: main
+    ref: v1.4.0-rc1
     dest: ./resources/[szcore]/szcore_ui
-
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_interact
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_interact
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_multichar
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_multichar
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_spawn
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_spawn
   - action: download_github
     src: https://github.com/Szilko121/szcore_inventory
-    ref: main
+    ref: v1.4.0-rc1
     dest: ./resources/[szcore]/szcore_inventory
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_society
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_society
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_banking
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_banking
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_billing
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_billing
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_vehicles
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_vehicles
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_vehiclekeys
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_vehiclekeys
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_garage
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_garage
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_vehiclefailure
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_vehiclefailure
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_smallresources
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_smallresources
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_paycheck
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_paycheck
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_status
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_status
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_death
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_death
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_appearance
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_appearance
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_admin
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_admin
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_benchmark
+    ref: v1.4.0-rc1
+    dest: ./resources/[szcore]/szcore_benchmark
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_compat_esx
+    ref: v1.4.0-rc1
+    dest: ./resources/[compat]/es_extended
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_compat_qb
+    ref: v1.4.0-rc1
+    dest: ./resources/[compat]/qb-core
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_compat_qbox
+    ref: v1.4.0-rc1
+    dest: ./resources/[compat]/qbx_core
+  - action: replace_string
+    mode: all_vars
+    file: ./server.cfg
+  - action: remove_path
+    path: ./tmp
