@@ -1,0 +1,26 @@
+# SzCore Framework txAdmin Recipe
+name: SzCore Roleplay Framework
+author: Szilko121
+version: 1.0.0
+description: Next-generation FiveM Roleplay framework ecosystem with modular architecture.
+
+tasks:
+  - action: download_github
+    src: https://github.com/Szilko121/SzCore-Framework
+    ref: main
+    dest: ./resources/[szcore]/SzCore-Framework
+
+  - action: download_github
+    src: https://github.com/Szilko121/szcore
+    ref: main
+    dest: ./resources/[szcore]/szcore
+
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_ui
+    ref: main
+    dest: ./resources/[szcore]/szcore_ui
+
+  - action: download_github
+    src: https://github.com/Szilko121/szcore_inventory
+    ref: main
+    dest: ./resources/[szcore]/szcore_inventory
