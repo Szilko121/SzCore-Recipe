@@ -1,6 +1,11 @@
 {
   "name": "SzCore Framework",
   "author": "SzCode",
-  "description": "Modular FiveM RP framework with separate resource repositories.",
-  "url": "https://raw.githubusercontent.com/Szilko121/SzCore-Recipe/main/recipe.yaml"
+  "description": "Official modular SzCore FiveM RP framework by SzCode with its own server branding and loading screen.",
+  "url": "https://raw.githubusercontent.com/Szilko121/SzCore-Recipe/main/recipe.yaml",
+  "tags": [
+    "fivem",
+    "roleplay",
+    "szcore"
+  ]
 }
