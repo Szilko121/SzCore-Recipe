@@ -13,6 +13,10 @@ tasks:
     src: ./tmp/szcore_recipe/server.cfg
     dest: ./server.cfg
     overwrite: true
+  - action: move_path
+    src: ./tmp/szcore_recipe/branding/szcore.png
+    dest: ./szcore.png
+    overwrite: true
   - action: connect_database
   - action: query_database
     file: ./tmp/szcore_recipe/database/szcore.sql
@@ -21,6 +25,10 @@ tasks:
     ref: master
     subpath: resources
     dest: ./resources/[cfx-default]
+  - action: move_path
+    src: ./tmp/szcore_recipe/loadingscreen
+    dest: ./resources/[szcore]/szcore_loadingscreen
+    overwrite: true
   - action: download_file
     url: https://github.com/overextended/oxmysql/releases/download/v2.14.1/oxmysql.zip
     path: ./tmp/oxmysql.zip
