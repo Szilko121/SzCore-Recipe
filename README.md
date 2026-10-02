@@ -25,6 +25,10 @@
 
 ---
 
+## 🎨 Native SzCore Branding
+
+The recipe now deploys a dedicated **96×96 SzCore server icon** and a fully custom **SzCore loading screen**. The loading screen is self-contained, uses native FiveM loading progress events, and hands off directly to `szcore_multichar`.
+
 ## 🚀 What This Recipe Does
 
 The recipe installs a complete SzCore server while keeping the ecosystem modular.
